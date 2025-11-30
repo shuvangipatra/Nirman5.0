@@ -1,0 +1,370 @@
+<!-- =======================
+     INDEX. HTML CONTENT
+======================== -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SafeHands — Quantum Safe City</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    :root {
+      --primary: #1e2a4b;
+      --primary-light: #2563eb;
+      --secondary: #4ade80;
+      --secondary-light: #22c55e;
+      --accent: #f59e0b;
+      --muted: #010811;
+      --bg: #ebeff3;
+      --card-bg: rgb(250, 250, 250);
+      --card-shadow: rgba(0,0,0,0.08);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; }
+    body { background:var(--bg); color:#212f44; line-height:1.5; }
+    a { text-decoration:none; }
+
+    .container { width:90%; max-width:1200px; margin:auto; }
+
+    header {
+      display:flex; justify-content:space-between; align-items:center; padding:1rem 0; background:white;
+      box-shadow:0 4px 15px rgba(0,0,0,0.05); border-radius:10px; margin-top:10px;
+    }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .logo { width:50px; height:50px; background:var(--primary); color:white; display:flex; align-items:center; justify-content:center; font-weight:bold; border-radius:50%; transition:0.3s; }
+    .logo:hover { background:var(--primary-light); }
+    .brand h1 { font-size:1.6rem; color:var(--primary); }
+    .brand span { font-size:0.85rem; color:var(--muted); }
+
+    .header-buttons { display:flex; gap:12px; align-items:center; }
+    .btn { padding:0.6rem 1.5rem; border-radius:50px; font-weight:bold; color:rgb(247, 239, 239); background:var(--primary); box-shadow:0 5px 15px rgba(0,0,0,0.1); transition:0.3s; display:flex; align-items:center; gap:5px; }
+    .btn:hover { background:var(--primary-light); transform:translateY(-2px); }
+    .btn.secondary { background:var(--secondary); }
+    .btn.secondary:hover { background:var(--secondary-light); transform:translateY(-2px); }
+
+    main { padding:2rem 0; }
+
+    .landing-hero { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:40px; }
+    .l-hero-card { flex:1 1 550px; animation: fadeInUp 1s ease forwards; opacity:0; }
+    .l-title {
+      font-size:3rem; font-weight:900;
+      background: linear-gradient(90deg, #354980, #6c6c9a, #4ade80, #f59e0b);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      animation: gradientMove 5s ease infinite;
+      margin-bottom:15px;
+    }
+
+    .l-sub { font-size:1.1rem; color:var(--muted); margin-bottom:20px; }
+    .cta-row { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:30px; }
+
+    .l-info-grid { display:flex; gap:15px; flex-wrap:wrap; }
+    .l-card {
+      flex:1 1 150px; background:var(--card-bg); padding:20px; border-radius:15px;
+      box-shadow:0 10px 25px var(--card-shadow); transition:all 0.3s ease;
+    }
+    .l-card:hover { transform:translateY(-5px); box-shadow:0 15px 30px var(--card-shadow); }
+
+    .tiles { display:flex; flex-direction:column; gap:15px; }
+    .tile {
+      background:var(--card-bg); padding:20px; border-radius:15px;
+      box-shadow:0 10px 25px var(--card-shadow); transition:all 0.3s ease;
+    }
+    .tile:hover { transform:translateY(-5px); box-shadow:0 15px 30px var(--card-shadow); }
+
+    footer { margin-top:40px; padding:20px; text-align:center; color:var(--muted); font-size:0.85rem; }
+
+    @keyframes gradientMove {
+      0% { background-position:0% 50%; }
+      50% { background-position:100% 50%; }
+      100% { background-position:0% 50%; }
+    }
+    @keyframes fadeInUp {
+      0% { opacity:0; transform:translateY(20px); }
+      100% { opacity:1; transform:translateY(0); }
+    }
+
+    @media(max-width:768px){
+      .landing-hero { flex-direction:column; }
+      .l-info-grid { flex-direction:column; }
+      .header-buttons { flex-direction:column; gap:6px; margin-top:10px; }
+    }
+
+    /* -----------------------------
+       LOGIN & SIGNUP PAGE CSS
+    ----------------------------- */
+
+    .auth-body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f7f8f9, #008aad);
+      margin: 0;
+      padding: 0;
+      color: #582405;
+      min-height: 100vh;
+    }
+
+    .auth-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .auth-title {
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .home-btn {
+      background: #ffffff;
+      padding: 10px 16px;
+      border-radius: 20px;
+      color: #041a25;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .auth-container {
+      width: 400px;
+      margin: auto;
+      margin-top: 50px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(7px);
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+
+    .auth-container h1 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .auth-form { display: flex; flex-direction: column; }
+
+    .auth-form label { margin-bottom: 5px; font-weight: bold; }
+
+    .auth-form input {
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .auth-btn {
+      padding: 12px;
+      background: #ffffff;
+      color: #082839;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 17px;
+    }
+
+    .switch-auth { text-align: center; margin-top: 20px; }
+
+    .switch-auth a {
+      color: #fff;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+<!-- =======================
+     INDEX PAGE CONTENT
+======================== -->
+
+  <header class="header container">
+    <div class="brand">
+      <div class="logo">SH</div>
+      <div>
+        <h1>SafeHands</h1>
+        <span> crime mapping & citizen reporting — Odisha focus</span>
+      </div>
+    </div>
+    <div class="header-buttons">
+      <a class="btn" href="login.html">Sign Up</a>
+      <a class="btn" href="login.html">Login</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="landing-hero" aria-label="Hero">
+      <div class="l-hero-card">
+        <div class="l-title">SafeHands — Odisha Safe City</div>
+        <p class="l-sub">Real-time mapping, predictive hotspots, citizen reporting and security monitoring.</p>
+
+        <div class="cta-row">
+          <a class="btn" href="citizen.html">Report an Incident</a>
+          <a class="btn secondary" href="admin.html">View Admin Dashboard</a>
+        </div>
+
+        <div class="l-info-grid">
+          <div class="l-card">
+            <div style="font-weight:700">Citizen First</div>
+            <div style="color:var(--muted);margin-top:8px">Fast reporting with geotagging.</div>
+          </div>
+          <div class="l-card">
+            <div style="font-weight:700">Predictive Analytics</div>
+            <div style="color:var(--muted);margin-top:8px">Pattern detection & hot zones.</div>
+          </div>
+          <div class="l-card">
+            <div style="font-weight:700">Secure & Auditable</div>
+            <div style="color:var(--muted);margin-top:8px">Cyber-monitoring & logs.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="max-width:420px">
+        <div class="tiles">
+          <div class="tile">
+            <h3>Odisha — Focus</h3>
+            <p style="color:var(--muted)">Maps centered on Bhubaneswar.</p>
+          </div>
+          <div class="tile">
+            <h3>How it Works</h3>
+            <p style="color:var(--muted)">Citizen submits → AI sorts → Admin validates.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:18px" class="tile">
+          <h3>Get Started</h3>
+          <p style="color:var(--muted)">Use Citizen Portal to report incidents.</p>
+        </div>
+      </div>
+
+    </section>
+
+
+
+<!-- =======================
+     LOGIN SECTION
+======================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login — SafeHands</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="auth-body">
+
+  <div class="auth-container">
+    <h1 class="auth-title">SafeHands Login</h1>
+
+    <form id="loginForm" class="auth-form">
+      <label>Email</label>
+      <input type="email" id="loginEmail" required>
+
+      <label>Password</label>
+      <input type="password" id="loginPassword" required>
+
+      <button type="submit" class="btn">Login</button>
+      <p class="auth-switch">Don't have an account? <a href="signup.html">Sign Up</a></p>
+    </form>
+  </div>
+
+<script>
+  document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let email = document.getElementById("loginEmail").value;
+    let password = document.getElementById("loginPassword").value;
+    let stored = JSON.parse(localStorage.getItem("users") || "[]");
+
+    let found = stored.find(u => u.email === email && u.password === password);
+
+    if(found){
+      alert("Login Successful!");
+      window.location.href = "index.html";
+    } else {
+      alert("Invalid Login Credentials!");
+    }
+  });
+</script>
+
+</body>
+</html>
+
+
+
+<!-- =======================
+     SIGNUP SECTION
+======================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign Up — SafeHands</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="auth-body">
+
+  <div class="auth-container">
+    <h1 class="auth-title">Create an Account</h1>
+
+    <form id="signupForm" class="auth-form">
+      <label>Full Name</label>
+      <input type="text" id="signupName" required>
+
+      <label>Email</label>
+      <input type="email" id="signupEmail" required>
+
+      <label>Password</label>
+      <input type="password" id="signupPassword" required>
+
+      <button type="submit" class="btn">Sign Up</button>
+      <p class="auth-switch">Already have an account? <a href="login.html">Login</a></p>
+    </form>
+  </div>
+
+<script>
+  document.getElementById("signupForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let name = document.getElementById("signupName").value;
+    let email = document.getElementById("signupEmail").value;
+    let password = document.getElementById("signupPassword").value;
+
+    let users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    if(users.find(u => u.email === email)){
+      alert("Email already exists!");
+      return;
+    }
+
+    users.push({name, email, password});
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Signup Successful!");
+    window.location.href = "login.html";
+  });
+</script>
+
+</body>
+</html>
+
+      </main>
+
+  <footer>
+    © 2025 SafeHands — Odisha Pilot • 
+  </footer>
+</body>
+</html>
+</section>
+
+</body>
+</html>

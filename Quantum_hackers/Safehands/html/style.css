@@ -1,0 +1,38 @@
+STYLE CSS
+
+
+<div class="auth-container">
+    <h2>Sign Up</h2>
+
+    <label>Full Name</label>
+    <input type="text" placeholder="Enter your full name">
+
+    <label>Email</label>
+    <input type="email" placeholder="Enter your email">
+
+    <label>Password</label>
+    <input type="password" placeholder="Create a password">
+
+    <button class="auth-btn">Create Account</button>
+
+    <div class="auth-link">
+        <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+</div>
+<style>
+  .del-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .del-btn:hover {
+    background: #b91c1c;
+    transform: scale(1.05);
+  }
+</style>

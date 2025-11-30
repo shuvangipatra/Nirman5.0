@@ -1,0 +1,60 @@
+SIGN UP BUTTON HTML 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign Up — SafeHands</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="auth-body">
+
+  <div class="auth-container">
+    <h1 class="auth-title">Create Account</h1>
+
+    <form id="signupForm" class="auth-form">
+      <label>Full Name</label>
+      <input type="text" id="signupName" required>
+
+      <label>Email</label>
+      <input type="email" id="signupEmail" required>
+
+      <label>Password</label>
+      <input type="password" id="signupPassword" required>
+
+      <button type="submit" class="auth-btn">Sign Up</button>
+
+      <p class="switch-auth">
+        Already have an account?
+        <a href="login.html">Login</a>
+      </p>
+    </form>
+  </div>
+
+<script>
+  document.getElementById("signupForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let name = signupName.value;
+    let email = signupEmail.value;
+    let password = signupPassword.value;
+
+    let users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    if(users.find(u => u.email === email)){
+      alert("Email already exists!");
+      return;
+    }
+
+    users.push({name, email, password});
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Signup Successful!");
+    window.location.href = "login.html";
+  });
+</script>
+
+</body>
+</html>
